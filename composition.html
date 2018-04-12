@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Game Composition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/journal/bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        
+</head>
+<body>
+    <div id="capture">
+    <div id="background">
+        
+        <div id="lign1">
+            <img id="homeTeam"/>
+            <img id="visitTeam"/>
+            <h2 id="competition">Fédérale 1</h2>
+            <div id="sponsorItem">
+                <i id="sponsorIntro">La composition présentée par:</i><br>
+                <img id="sponsor"/>
+            </div>
+            
+        </div>
+        <div id="lign2" class="ligns">
+            <div>
+                <img id="14" class="player" style="margin-top:50px"/>
+                <h3 class="position">14</h3>
+            </div>
+            <div>
+                <img id="13" class="player" style="margin-top:80px"/>
+                <h3 class="position">13</h3>
+            </div>
+            <div>
+                <img id="15" class="player"/>
+                <h3 class="position">15</h3>
+            </div>
+            <div>
+                <img id="12" class="player" style="margin-top:80px"/>
+                <h3 class="position">12</h3>
+            </div>
+            <div>
+                <img id="11" class="player" style="margin-top:50px"/>
+                <h3 class="position">11</h3>
+            </div>
+        </div>
+        <div id="lign3" class="ligns">
+            <div>
+                <img id="10" class="player"/>
+                <h3 class="position">10</h3>
+            </div>
+            <div>
+                <img id="9" class="player" style="margin-top:30px"/>
+                <h3 class="position">9</h3>
+            </div>
+        </div>
+        <div id="lign4" class="ligns">
+            <div>
+                <img id="7" class="player" style="margin-top:30px"/>
+                <h3 class="position">7</h3>
+            </div>
+            <div>
+                <img id="8" class="player"/>
+                <h3 class="position">8</h3>
+            </div>
+            <div>
+                <img id="6" class="player" style="margin-top:30px"/>
+                <h3 class="position">6</h3>
+            </div>
+        </div>
+        <div id="lign5" class="ligns">
+            <div>
+                <img id="5" class="player"/>
+                <h3 class="position">5</h3>
+            </div>
+            <div>
+                <img id="4" class="player"/>
+                <h3 class="position">4</h3>
+            </div>
+        </div>
+        <div id="lign6" class="ligns">
+            <div>
+                <img id="3" class="player"/>
+                <h3 class="position">3</h3>
+            </div>
+            <div>
+                <img id="2" class="player"/>
+                <h3 class="position">2</h3>
+            </div>
+            <div>
+                <img id="1" class="player"/>
+                <h3 class="position">1</h3>
+            </div>
+        </div>
+        <div id="lign7" class="ligns">
+            <div>
+                <img id="16" class="player"/>
+                <h3 class="position">16</h3>
+            </div>
+            <div>
+                <img id="17" class="player"/>
+                <h3 class="position">17</h3>
+            </div>
+            <div>
+                <img id="18" class="player"/>
+                <h3 class="position">18</h3>
+            </div>
+            <div>
+                <img id="19" class="player"/>
+                <h3 class="position">19</h3>
+            </div>
+            <div>
+                <img id="20" class="player"/>
+                <h3 class="position">20</h3>
+            </div>
+            <div>
+                <img id="21" class="player"/>
+                <h3 class="position">21</h3>
+            </div>
+            <div>
+                <img id="22" class="player"/>
+                <h3 class="position">22</h3>
+            </div>
+            <div>
+                <img id="23" class="player"/>
+                <h3 class="position">23</h3>
+            </div>
+        </div>
+
+        <div id="lign8">
+            <div>
+                <h3 id="date"></h3>
+                <h3 id="location"></h3>
+            </div>
+            <div>
+                <p id="24" class="plus">24</p>
+                <p id="25" class="plus">25</p>
+            </div>
+            
+        </div>
+        <h5 id="website"></h5>
+</div>
+</div>
+
+<button id="htmlToJpgBtn" type="button" class="btn btn-primary" href="#">HTML TO JPG</button>
+
+<script src="./js/composition.js"></script>
+
+</body>
+
+<script>
+    function saveImage(canvas){
+        var imagedata = canvas.toDataURL('image/png');
+        var imgdata = imagedata.replace(/^data:image\/(png|jpg);base64,/, "");
+        //ajax call to save image inside folder
+        $.ajax({
+            url: 'php/save_image.php',
+            data: {
+                    imgdata:imgdata
+                    },
+            type: 'post',
+            success: function (response) {   
+                console.log(response);
+                $('#image_id img').attr('src', response);
+            }
+        });
+    }
+</script>
+
+<script>
+    $('#htmlToJpgBtn').click( function() {
+        html2canvas(document.getElementById('background'), {
+            letterRendering: 1,
+            allowTaint : true,
+    }).then(function(canvas) {
+        document.body.appendChild(canvas);
+        var img = canvas.toDataURL("image/png");
+        document.write('<img src="'+img+'"/>');
+    });;
+    })
+
+</script>
+</html>

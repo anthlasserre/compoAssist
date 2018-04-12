@@ -1,0 +1,73 @@
+#background {
+    padding:10px;
+    height:1133px;
+    width:720px;
+    background-size: cover;
+}
+#homeTeam {
+    height:100px;
+    width:auto;
+}
+.player {
+    height: 110px;
+    width: auto;
+}
+.ligns {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+#competition {
+    display: inline;
+    color:white;
+}
+#sponsor {
+    height: 80px;
+    width: auto;
+}
+#sponsorIntro {
+    color:white;
+}
+#sponsorItem {
+    display: inline-block;
+    text-align: right
+}
+#lign1 {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+#lign2 {
+    margin-top:-30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#lign3, #lign5 {
+    margin-top:-30px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+#lign4, #lign6 {
+    margin-top:-20px;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+#lign8 {
+    display: flex;
+    justify-content: space-between;
+}
+.position {
+    color:white;
+    font-size: 20px;
+}
+#date, #location  {
+    color:white;
+}
+#website {
+    padding-top:20px;
+    color:white;
+    text-align: center;
+}
+.plus {
+    color: white;
+}
